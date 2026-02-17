@@ -1,255 +1,27 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marty Lab</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="assets/favicon/site.webmanifest">
-    <link rel="shortcut icon" href="assets/favicon/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <meta
+      name="description"
+      content="Oggetti unici incisi a mano: legno, metallo, vetro, bicchieri e bottiglie luminose. Marty Lab realizza pezzi personalizzati su misura."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png" />
+    <link rel="manifest" href="assets/favicon/site.webmanifest" />
+    <link rel="shortcut icon" href="assets/favicon/favicon.ico" />
   </head>
   <body>
-    <header class="site-header navbar">
-      <div class="header-band">
-        <a class="logo" href="index.html">Marty Lab</a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-          <span class="menu-toggle__box" aria-hidden="true">
-            <span class="menu-toggle__bar"></span>
-          </span>
-          <span class="sr-only">Apri il menu</span>
-        </button>
-      </div>
-      <nav id="site-nav" class="menu-bar" aria-label="Navigazione principale" data-nav-menu>
-        <a href="#vetrina">In evidenza</a>
-        <a href="#categorie">Categorie</a>
-        <a href="#prodotti">Prodotti</a>
-        <a href="#contatti">Contatti</a>
-      </nav>
-    </header>
-
-    <main>
-      <section id="vetrina" class="hero-carousel" aria-label="Selezione prodotti in loop">
-        <div class="container hero-carousel__inner">
-          <div class="hero-carousel__intro">
-            <span class="hero-carousel__eyebrow">Produzioni in evidenza</span>
-            <h1 class="hero-carousel__title">Oggetti unici incisi a mano</h1>
-            <p class="hero-carousel__subtitle">Materia, luce e incisioni d’autore: ogni pezzo racconta una storia che nessun altro possiede.</p>
-          </div>
-          <div class="hero-carousel__stage">
-            <div class="hero-carousel__slides" data-carousel>
-              <figure class="hero-carousel__slide is-active" data-carousel-item>
-                <img src="assets/img/bicchiere2.jpeg" alt="Targa in legno inciso con pattern geometrico" loading="lazy">
-                <figcaption>Legno inciso • Pattern geometrici su essenze naturali</figcaption>
-              </figure>
-              <figure class="hero-carousel__slide" data-carousel-item>
-                <img src="assets/img/metallo4.jpeg" alt="Lastra in metallo con incisione luminosa" loading="lazy">
-                <figcaption>Metallo inciso • Contrasti netti e riflessi metallici</figcaption>
-              </figure>
-              <figure class="hero-carousel__slide" data-carousel-item>
-                <img src="assets/img/legno13.jpeg" alt="Bicchiere in vetro satinato inciso a mano" loading="lazy">
-                <figcaption>Vetro inciso • Trasparenze che giocano con la luce</figcaption>
-              </figure>
-              <figure class="hero-carousel__slide" data-carousel-item>
-                <img src="assets/img/bicchiere3.jpeg" alt="Set di bicchieri personalizzati con incisione su misura" loading="lazy">
-                <figcaption>Bicchieri incisi • Set personalizzati per eventi speciali</figcaption>
-              </figure>
-              <figure class="hero-carousel__slide" data-carousel-item>
-                <img src="assets/img/bottoglia1.jpeg" alt="Bottiglia trasformata in lampada incisa" loading="lazy">
-                <figcaption>Bottiglie luminose • Lampade poetiche da pezzi recuperati</figcaption>
-              </figure>
-            </div>
-            <div class="hero-carousel__indicators" role="tablist" aria-label="Selezione prodotto">
-              <button type="button" class="hero-carousel__indicator is-active" data-carousel-indicator aria-label="Mostra legno inciso"></button>
-              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra metallo inciso"></button>
-              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra vetro inciso"></button>
-              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra bicchieri incisi"></button>
-              <button type="button" class="hero-carousel__indicator" data-carousel-indicator aria-label="Mostra bottiglie luminose"></button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker__inner">
-          <div class="ticker__track">
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-          </div>
-          <div class="ticker__track">
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-            <span class="ticker__item ticker__item--bold">Categorie</span>
-            <span class="ticker__item">categorie</span>
-          </div>
-        </div>
-      </div>
-
-      <section id="categorie" class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Servizi</h2>
-            <p class="section-subtitle">Incisioni su misura che trasformano materiali quotidiani in oggetti icona.</p>
-          </div>
-          <div class="categories">
-            <a class="category-card" data-reveal="fade-up" href="#prodotti" data-filter-link="legno">
-              <div class="category-icon">✶</div>
-              <h3>Legno inciso</h3>
-              <p>Targhe e insegne in essenze naturali con pattern audaci su misura.</p>
-            </a>
-            <a class="category-card" data-reveal="fade-up" data-reveal-delay="80" href="#prodotti" data-filter-link="metallo">
-              <div class="category-icon">✦</div>
-              <h3>Metallo inciso</h3>
-              <p>Acciaio e alluminio incisi a contrasto per loghi e targhe industrial chic.</p>
-            </a>
-            <a class="category-card" data-reveal="fade-up" data-reveal-delay="160" href="#prodotti" data-filter-link="vetro">
-              <div class="category-icon">✺</div>
-              <h3>Vetro inciso</h3>
-              <p>Trasparenze scolpite che accendono vetro satinato e superfici brillanti.</p>
-            </a>
-            <a class="category-card" data-reveal="fade-up" data-reveal-delay="240" href="#prodotti" data-filter-link="bicchieri">
-              <div class="category-icon">❋</div>
-              <h3>Bicchieri incisi</h3>
-              <p>Set unici per eventi speciali con grafiche dedicate inciso a mano.</p>
-            </a>
-            <a class="category-card" data-reveal="fade-up" data-reveal-delay="320" href="#prodotti" data-filter-link="bottiglie">
-              <div class="category-icon">✹</div>
-              <h3>Bottiglie con lampada</h3>
-              <p>Bottiglie recuperate trasformate in lampade scenografiche e luminose.</p>
-            </a>
-            <a class="category-card" data-reveal="fade-up" data-reveal-delay="400" href="#prodotti" data-filter-link="tessuto">
-              <div class="category-icon">✿</div>
-              <h3>Stampa su tessuto</h3>
-              <p>Texture stampate su tessuti naturali e tecnici per accessori, arredo e capsule brandizzate.</p>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <div class="ticker ticker--gallery" aria-hidden="true">
-        <div class="ticker__inner">
-          <div class="ticker__track">
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-          </div>
-          <div class="ticker__track">
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-            <span class="ticker__item ticker__item--bold">Galleria</span>
-            <span class="ticker__item">galleria</span>
-          </div>
-        </div>
-      </div>
-
-      <section id="prodotti" class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">Selezione di prodotti</h2>
-            <p class="section-subtitle">Ogni pezzo è creato in serie limitata. Contatta direttamente Anna per disponibilità e personalizzazioni.</p>
-          </div>
-          <div class="filter-bar" role="group" aria-label="Filtra per categoria" data-reveal="fade-up">
-            <button type="button" class="filter-btn is-active" data-filter-control="all" aria-pressed="true">Tutti</button>
-            <button type="button" class="filter-btn" data-filter-control="legno" aria-pressed="false">Legno inciso</button>
-            <button type="button" class="filter-btn" data-filter-control="metallo" aria-pressed="false">Metallo inciso</button>
-            <button type="button" class="filter-btn" data-filter-control="vetro" aria-pressed="false">Vetro inciso</button>
-            <button type="button" class="filter-btn" data-filter-control="bicchieri" aria-pressed="false">Bicchieri incisi</button>
-            <button type="button" class="filter-btn" data-filter-control="bottiglie" aria-pressed="false">Bottiglie con lampada</button>
-            <button type="button" class="filter-btn" data-filter-control="tessuto" aria-pressed="false">Stampa su tessuto</button>
-          </div>
-          <div class="product-grid" data-gallery-root data-gallery-context="homepage"></div>
-        </div>
-      </section>
-
-      <section id="contatti" class="section contact">
-        <div class="container contact-content">
-          <div class="contact-intro" data-reveal="fade-up">
-            <h2 class="section-title">Contatta Anna</h2>
-            <p>Parliamo del tuo progetto su misura: dal concept alla consegna ti seguo nella scelta di materiali, incisioni e finiture che raccontano la tua storia.</p>
-            <ul class="contact-points">
-              <li>Campionature rapide e consulenza su vetro, metallo, legno e materiali recuperati.</li>
-              <li>Personalizzazioni per eventi, brand e regali unici con consegna curata in tutta Italia.</li>
-              <li>Appuntamenti in studio su richiesta con moodboard e prototipi dedicati.</li>
-            </ul>
-            <div class="contact-actions">
-              <a class="btn contact-btn" href="mailto:brizzianna83@gmail.com">Scrivi una mail</a>
-              <a class="btn contact-btn contact-btn--outline" href="tel:+393482384828">Chiama subito</a>
-            </div>
-          </div>
-          <div class="contact-card" data-reveal="fade-up" data-reveal-delay="120">
-            <h3>Info e ordini</h3>
-            <dl class="contact-list">
-              <div class="contact-list__item">
-                <dt>Email</dt>
-                <dd><a class="contact-link" href="mailto:brizzianna83@gmail.com">brizzianna83@gmail.com</a></dd>
-              </div>
-              <div class="contact-list__item">
-                <dt>Telefono</dt>
-                <dd><a class="contact-link" href="tel:+393482384828">+39 348 238 4828</a></dd>
-              </div>
-            </dl>
-            <ul class="contact-meta">
-              <li>
-                <span class="contact-meta__label">Studio</span>
-                <span class="contact-meta__value">Verona • Italia</span>
-              </li>
-              <li>
-                <span class="contact-meta__label">Disponibilità</span>
-                <span class="contact-meta__value">Lun – Ven, 10:00 → 18:00</span>
-              </li>
-            </ul>
-            <p class="contact-note">Rispondo entro 24 ore lavorative con proposte personalizzate e indicazioni su tempi e costi.</p>
-          </div>
-        </div>
-      </section>
-
-    </main>
-
-    <footer class="footer">
-      <div class="container footer-content">
-        <p>&copy; <span id="year"></span> Marty Lab. Tutti i diritti riservati.</p>
-        <button type="button" class="footer-link footer-link--button" data-privacy-trigger>
-          Privacy &amp; condizioni
-        </button>
-        <p class="footer-credit">
-          <a class="footer-credit__link" href="https://lucamarastoni.eu" target="_blank" rel="noopener noreferrer">
-            Realizzato da Luca Marastoni Digital Solutions
-          </a>
-        </p>
-      </div>
-    </footer>
-
-    <a class="whatsapp-float" href="https://wa.me/393482384828" target="_blank" rel="noopener noreferrer" aria-label="Apri chat WhatsApp con Anna">
-      <svg class="whatsapp-float__icon" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <path fill="currentColor" d="M16 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.46 1.74 6.4L3 29l6.78-1.78a12.76 12.76 0 0 0 6.22 1.6h.01c7.07 0 12.8-5.73 12.8-12.8 0-3.4-1.32-6.59-3.72-8.99A12.72 12.72 0 0 0 16 3.2zm0 23.22h-.01a10.6 10.6 0 0 1-5.4-1.48l-.39-.23-4.03 1.06 1.08-3.93-.26-.4a10.59 10.59 0 0 1-1.7-5.76c0-5.86 4.77-10.62 10.64-10.62 2.84 0 5.52 1.11 7.53 3.13a10.56 10.56 0 0 1 3.11 7.49c0 5.86-4.77 10.62-10.58 10.62zm5.83-7.97c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.52-.16-.74.16-.22.32-.86 1.05-1.05 1.27-.2.22-.4.24-.72.08-.32-.16-1.36-.5-2.6-1.6a9.8 9.8 0 0 1-1.8-2.23c-.19-.32 0-.5.15-.66.14-.14.32-.36.48-.54.16-.18.22-.32.32-.54.1-.22.05-.4-.03-.56-.08-.16-.74-1.78-1.01-2.44-.26-.62-.52-.54-.74-.55h-.63c-.2 0-.54.08-.82.4-.28.32-1.08 1.05-1.08 2.56 0 1.5 1.1 2.95 1.25 3.15.16.2 2.16 3.3 5.24 4.63.73.32 1.3.5 1.74.64.73.23 1.4.2 1.93.12.59-.09 1.9-.78 2.17-1.54.27-.76.27-1.4.19-1.54-.08-.14-.3-.22-.62-.38z"/>
-      </svg>
-      <span class="sr-only">Chatta su WhatsApp con Anna</span>
-    </a>
-
-    <script src="script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
