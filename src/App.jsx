@@ -125,66 +125,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const root = document.documentElement;
-    const centerX = window.innerWidth / 2;
-    const centerY = window.innerHeight / 2;
-
-    if (reducedMotion) {
-      root.style.setProperty("--pointer-x", `${centerX}px`);
-      root.style.setProperty("--pointer-y", `${centerY}px`);
-      root.style.setProperty("--pointer-trail-x", `${centerX}px`);
-      root.style.setProperty("--pointer-trail-y", `${centerY}px`);
-      return undefined;
-    }
-
-    let targetX = centerX;
-    let targetY = centerY;
-    let currentX = centerX;
-    let currentY = centerY;
-    let trailX = centerX;
-    let trailY = centerY;
-    let rafId = null;
-
-    const animate = () => {
-      currentX += (targetX - currentX) * 0.2;
-      currentY += (targetY - currentY) * 0.2;
-      trailX += (currentX - trailX) * 0.12;
-      trailY += (currentY - trailY) * 0.12;
-
-      root.style.setProperty("--pointer-x", `${currentX}px`);
-      root.style.setProperty("--pointer-y", `${currentY}px`);
-      root.style.setProperty("--pointer-trail-x", `${trailX}px`);
-      root.style.setProperty("--pointer-trail-y", `${trailY}px`);
-
-      rafId = window.requestAnimationFrame(animate);
-    };
-
-    const movePointer = (event) => {
-      targetX = event.clientX;
-      targetY = event.clientY;
-    };
-
-    const centerPointer = () => {
-      targetX = window.innerWidth / 2;
-      targetY = window.innerHeight / 2;
-    };
-
-    rafId = window.requestAnimationFrame(animate);
-    window.addEventListener("pointermove", movePointer, { passive: true });
-    window.addEventListener("pointerdown", movePointer, { passive: true });
-    window.addEventListener("blur", centerPointer);
-
-    return () => {
-      if (rafId !== null) {
-        window.cancelAnimationFrame(rafId);
-      }
-      window.removeEventListener("pointermove", movePointer);
-      window.removeEventListener("pointerdown", movePointer);
-      window.removeEventListener("blur", centerPointer);
-    };
-  }, [reducedMotion]);
-
-  useEffect(() => {
     const lockScroll = lightboxItem || privacyOpen;
     document.body.style.overflow = lockScroll ? "hidden" : "";
     return () => {
@@ -245,11 +185,6 @@ function App() {
 
   return (
     <>
-      <div className="fx fx--grain" aria-hidden="true" />
-      <div className="fx fx--pointer-trail" aria-hidden="true" />
-      <div className="fx fx--pointer" aria-hidden="true" />
-      <div className="fx fx--aurora" aria-hidden="true" />
-
       <header className={`site-header ${condensedHeader ? "is-condensed" : ""}`}>
         <div className="container site-header__inner">
           <a href="#vetrina" className="logo" onClick={() => setMenuOpen(false)}>

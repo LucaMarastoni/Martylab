@@ -10,10 +10,6 @@
   --radius-xl: 24px;
   --radius-md: 16px;
   --container: min(1120px, 92vw);
-  --pointer-x: 50vw;
-  --pointer-y: 50vh;
-  --pointer-trail-x: 50vw;
-  --pointer-trail-y: 50vh;
 }
 
 * {
@@ -40,9 +36,8 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle at 12% 18%, rgba(245, 211, 0, 0.12), transparent 38%),
-    radial-gradient(circle at 88% 82%, rgba(245, 211, 0, 0.1), transparent 34%),
-    linear-gradient(140deg, rgba(255, 177, 0, 0.07), transparent 32%, rgba(255, 177, 0, 0.06) 68%, transparent);
+    radial-gradient(circle at 10% 12%, rgba(245, 211, 0, 0.08), transparent 30%),
+    radial-gradient(circle at 88% 88%, rgba(245, 211, 0, 0.06), transparent 28%);
   z-index: -3;
 }
 
@@ -78,94 +73,6 @@ img {
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
-}
-
-.fx {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: -2;
-}
-
-.fx--grain {
-  opacity: 0.08;
-  background-image: radial-gradient(#fff 0.5px, transparent 0.5px);
-  background-size: 4px 4px;
-  mix-blend-mode: soft-light;
-}
-
-.fx--pointer-trail {
-  background: radial-gradient(
-    circle 360px at var(--pointer-trail-x) var(--pointer-trail-y),
-    rgba(245, 211, 0, 0.12),
-    transparent 68%
-  );
-  filter: blur(16px);
-}
-
-.fx--pointer {
-  background:
-    radial-gradient(circle 150px at var(--pointer-x) var(--pointer-y), rgba(245, 211, 0, 0.25), transparent 66%),
-    radial-gradient(circle 22px at var(--pointer-x) var(--pointer-y), rgba(255, 239, 165, 0.65), transparent 70%);
-  mix-blend-mode: screen;
-}
-
-.fx--pointer::after {
-  content: "";
-  position: absolute;
-  left: calc(var(--pointer-x) - 26px);
-  top: calc(var(--pointer-y) - 26px);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 1px solid rgba(245, 211, 0, 0.38);
-  box-shadow: 0 0 26px rgba(245, 211, 0, 0.28);
-  opacity: 0.58;
-}
-
-.fx--aurora::before,
-.fx--aurora::after {
-  content: "";
-  position: absolute;
-  border-radius: 999px;
-  filter: blur(55px);
-  opacity: 0.34;
-}
-
-.fx--aurora::before {
-  width: 360px;
-  height: 360px;
-  left: -80px;
-  top: 20vh;
-  background: rgba(255, 177, 0, 0.45);
-  animation: drift-a 16s ease-in-out infinite alternate;
-}
-
-.fx--aurora::after {
-  width: 420px;
-  height: 420px;
-  right: -100px;
-  top: 50vh;
-  background: rgba(245, 211, 0, 0.35);
-  animation: drift-b 20s ease-in-out infinite alternate;
-}
-
-@keyframes drift-a {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(80px, -60px, 0) scale(1.2);
-  }
-}
-
-@keyframes drift-b {
-  from {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-  to {
-    transform: translate3d(-70px, 80px, 0) scale(0.9);
-  }
 }
 
 .site-header {
@@ -1173,13 +1080,6 @@ main {
   }
 }
 
-@media (hover: none), (pointer: coarse) {
-  .fx--pointer-trail,
-  .fx--pointer {
-    display: none;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1188,11 +1088,5 @@ main {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
-  }
-
-  .fx--pointer-trail,
-  .fx--pointer,
-  .fx--aurora {
-    display: none;
   }
 }
