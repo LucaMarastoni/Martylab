@@ -217,7 +217,9 @@ main {
 }
 
 .hero__copy {
-  max-width: 42rem;
+  max-width: 56rem;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .hero__eyebrow {
@@ -237,7 +239,7 @@ main {
   font-family: "Syne", "Bebas Neue", sans-serif;
   letter-spacing: 0.06em;
   line-height: 0.98;
-  font-size: clamp(2.7rem, 8vw, 5.2rem);
+  font-size: clamp(3.4rem, 11vw, 7rem);
 }
 
 .hero__word {
@@ -262,7 +264,8 @@ main {
 
 .hero__subtitle {
   margin-top: 1.4rem;
-  max-width: 36ch;
+  max-width: 42ch;
+  margin-inline: auto;
   color: var(--muted);
   font-size: 1.02rem;
 }
@@ -271,6 +274,7 @@ main {
   margin-top: 1rem;
   display: grid;
   gap: 0.25rem;
+  justify-items: center;
 }
 
 .hero__metrics span {
@@ -285,10 +289,12 @@ main {
   flex-wrap: wrap;
   gap: 0.85rem;
   margin-top: 1.8rem;
+  justify-content: center;
 }
 
 .hero-reviews {
   margin-top: 1.05rem;
+  margin-inline: auto;
   border: 1px solid rgba(245, 211, 0, 0.26);
   border-radius: 22px;
   background:
@@ -949,7 +955,7 @@ main {
   }
 
   .hero__title {
-    font-size: clamp(2.15rem, 12vw, 3.38rem);
+    font-size: clamp(2.55rem, 13vw, 4.2rem);
     letter-spacing: 0.04em;
   }
 
