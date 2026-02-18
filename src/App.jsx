@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { filters, privacyCards, products } from "./data/gallery";
 
 const withBase = (path) => `${import.meta.env.BASE_URL}${path}`;
@@ -104,6 +104,8 @@ function App() {
   const [privacyOpen, setPrivacyOpen] = useState(false);
   const [condensedHeader, setCondensedHeader] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [filterBarScrollable, setFilterBarScrollable] = useState(false);
+  const filterBarRef = useRef(null);
 
   useEffect(() => {
     const media = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -158,6 +160,87 @@ function App() {
     }
     return products.filter((item) => item.category === activeFilter);
   }, [activeFilter]);
+
+  useEffect(() => {
+    const bar = filterBarRef.current;
+    if (!bar) {
+      return undefined;
+    }
+
+    const updateScrollable = () => {
+      setFilterBarScrollable(bar.scrollWidth - bar.clientWidth > 12);
+    };
+
+    updateScrollable();
+    window.addEventListener("resize", updateScrollable);
+    const timerId = window.setTimeout(updateScrollable, 120);
+
+    return () => {
+      window.clearTimeout(timerId);
+      window.removeEventListener("resize", updateScrollable);
+    };
+  }, []);
+
+  useEffect(() => {
+    const bar = filterBarRef.current;
+    if (!bar || reducedMotion || !filterBarScrollable) {
+      return undefined;
+    }
+
+    let rafId = null;
+    let lastFrame = 0;
+    let direction = 1;
+    let pauseUntil = performance.now() + 1200;
+    const speed = 16; // px per second
+
+    const maxScroll = () => Math.max(0, bar.scrollWidth - bar.clientWidth);
+
+    const nudgePause = () => {
+      pauseUntil = performance.now() + 2200;
+    };
+
+    const tick = (timestamp) => {
+      if (!lastFrame) {
+        lastFrame = timestamp;
+      }
+
+      const distance = maxScroll();
+      const deltaSeconds = (timestamp - lastFrame) / 1000;
+      lastFrame = timestamp;
+
+      if (distance > 2 && timestamp >= pauseUntil) {
+        bar.scrollLeft += direction * speed * deltaSeconds;
+
+        if (bar.scrollLeft >= distance - 0.5) {
+          bar.scrollLeft = distance;
+          direction = -1;
+          pauseUntil = timestamp + 1100;
+        } else if (bar.scrollLeft <= 0.5) {
+          bar.scrollLeft = 0;
+          direction = 1;
+          pauseUntil = timestamp + 1100;
+        }
+      }
+
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    bar.addEventListener("pointerdown", nudgePause, { passive: true });
+    bar.addEventListener("wheel", nudgePause, { passive: true });
+    bar.addEventListener("touchstart", nudgePause, { passive: true });
+    bar.addEventListener("mouseenter", nudgePause, { passive: true });
+    rafId = window.requestAnimationFrame(tick);
+
+    return () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+      bar.removeEventListener("pointerdown", nudgePause);
+      bar.removeEventListener("wheel", nudgePause);
+      bar.removeEventListener("touchstart", nudgePause);
+      bar.removeEventListener("mouseenter", nudgePause);
+    };
+  }, [filterBarScrollable, reducedMotion]);
 
   const onCardTilt = (event) => {
     if (reducedMotion) {
@@ -216,6 +299,20 @@ function App() {
 
       <main>
         <section id="vetrina" className="hero section">
+          <div className="hero__media" aria-hidden="true">
+            <video
+              className="hero__video"
+              autoPlay={!reducedMotion}
+              loop={!reducedMotion}
+              muted
+              playsInline
+              preload="metadata"
+              poster={withBase("assets/img/metallo4.jpeg")}
+            >
+              <source src={withBase("assets/vid/hero.mp4")} type="video/mp4" />
+            </video>
+          </div>
+          <div className="hero__veil" aria-hidden="true" />
           <div className="container hero__grid">
             <div className="hero__copy">
               <p className="hero__eyebrow">Produzioni in evidenza</p>
@@ -247,18 +344,25 @@ function App() {
               <p>Filtra per materiale e scorri subito tutte le lavorazioni.</p>
             </header>
 
-            <div className="filter-bar" role="group" aria-label="Filtra prodotti per categoria">
-              {filters.map((filter) => (
-                <button
-                  key={filter.id}
-                  type="button"
-                  className={`filter-btn ${activeFilter === filter.id ? "is-active" : ""}`}
-                  aria-pressed={activeFilter === filter.id}
-                  onClick={() => setActiveFilter(filter.id)}
-                >
-                  {filter.label}
-                </button>
-              ))}
+            <div className={`filter-bar-wrap ${filterBarScrollable ? "is-scrollable" : ""}`}>
+              <div ref={filterBarRef} className="filter-bar" role="group" aria-label="Filtra prodotti per categoria">
+                {filters.map((filter) => (
+                  <button
+                    key={filter.id}
+                    type="button"
+                    className={`filter-btn ${activeFilter === filter.id ? "is-active" : ""}`}
+                    aria-pressed={activeFilter === filter.id}
+                    onClick={() => setActiveFilter(filter.id)}
+                  >
+                    {filter.label}
+                  </button>
+                ))}
+              </div>
+              {filterBarScrollable && (
+                <span className="filter-bar-hint" aria-hidden="true">
+                  Scorri →
+                </span>
+              )}
             </div>
 
             <div className="products-grid">
