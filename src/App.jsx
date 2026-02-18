@@ -302,9 +302,10 @@ function App() {
           <div className="hero__media" aria-hidden="true">
             <video
               className="hero__video"
-              autoPlay={!reducedMotion}
-              loop={!reducedMotion}
+              autoPlay
+              loop
               muted
+              defaultMuted
               playsInline
               preload="metadata"
               poster={withBase("assets/img/metallo4.jpeg")}
